@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="toggle-modal-container">
+      <h1 id="toggle-modal" class="toggle-modal">Add Bookmark</h1>
+    </div>
+
+    <div id="bookmarks-container" class="bookmarks-container"></div>
+
+    <div id="modal-container" class="modal-container">
+      <div class="modal">
+        <i class="ph ph-x-square close-modal" id="close-modal" title="Close"></i>
+
+        <div class="modal-header">
+          <h3>Add Bookmark</h3>
+        </div>
+
+        <div class="modal-content">
+          <form class="bookmark-form" id="bookmark-form">
+            <div class="form-group">
+              <label for="website-name">Website Name</label>
+              <input type="text" id="website-name" />
+            </div>
+
+            <div class="form-group">
+              <label for="website-url">Website URL</label>
+              <input type="text" id="website-url" />
+            </div>
+
+            <button type="submit" class="save-bookmark">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
