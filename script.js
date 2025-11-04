@@ -74,6 +74,10 @@ const createBookmarks = () => {
     deleteBookmark.setAttribute('title', 'Delete');
 
     deleteBookmark.addEventListener('click', () => {
+      if (selectContainer.querySelector('.select').classList.contains('active')) {
+        return;
+      }
+
       delete bookmarks[url];
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
       fetchBookmarks();
@@ -187,6 +191,8 @@ window.addEventListener('click', e => {
 
 // close select dropdown on click of window
 window.addEventListener('click', e => {
+  e.preventDefault();
+
   if (!selectContainer.contains(e.target)) {
     selectContainer.querySelector('.select').classList.remove('active');
   }
