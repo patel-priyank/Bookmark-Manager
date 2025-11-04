@@ -8,6 +8,7 @@ const bookmarkForm = document.querySelector('#bookmark-form');
 const websiteNameEl = document.querySelector('#website-name');
 const websiteUrlEl = document.querySelector('#website-url');
 
+let select;
 let bookmarks = {};
 
 const createBookmarks = () => {
@@ -74,7 +75,7 @@ const createBookmarks = () => {
     deleteBookmark.setAttribute('title', 'Delete');
 
     deleteBookmark.addEventListener('click', () => {
-      if (selectContainer.querySelector('.select').classList.contains('active')) {
+      if (select.classList.contains('active')) {
         return;
       }
 
@@ -169,6 +170,8 @@ const createCustomDropdown = () => {
   selectDiv.addEventListener('click', () => {
     selectDiv.classList.toggle('active');
   });
+
+  select = selectDiv;
 };
 
 // open modal
@@ -191,10 +194,12 @@ window.addEventListener('click', e => {
 
 // close select dropdown on click of window
 window.addEventListener('click', e => {
-  e.preventDefault();
+  if (select.classList.contains('active')) {
+    e.preventDefault();
 
-  if (!selectContainer.contains(e.target)) {
-    selectContainer.querySelector('.select').classList.remove('active');
+    if (!selectContainer.contains(e.target)) {
+      select.classList.remove('active');
+    }
   }
 });
 
