@@ -40,7 +40,75 @@ button {
   user-select: none;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0.75rem;
+  font-size: 1.125rem;
+  color: #ffffff;
+}
+
+.select-container {
+  position: relative;
+
+  select {
+    display: none;
+  }
+
+  .select {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    padding-right: calc(1rem + 1.125rem);
+    cursor: pointer;
+    user-select: none;
+
+    &::after {
+      font-family: Phosphor;
+      content: '\E136';
+      position: absolute;
+      top: 50%;
+      right: 0.5rem;
+      transform: translate(0, -50%);
+    }
+
+    &.active::after {
+      content: '\E13C';
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  .options {
+    position: absolute;
+    top: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    div {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+
+      &:hover,
+      &.selected {
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    .select:not(.active) + & {
+      display: none;
+    }
   }
 }
 
@@ -60,7 +128,6 @@ button {
   font-size: 1.25rem;
   font-weight: bold;
   color: #ffffff;
-  text-shadow: 0 2px rgba(0, 0, 0, 0.8);
 }
 
 .bookmark {
@@ -69,13 +136,15 @@ button {
   border-radius: var(--border-radius);
   padding: 1.25rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bookmark-content {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
 }
 
 .bookmark-name {
@@ -119,7 +188,7 @@ button {
 }
 
 .modal-container {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.75);
   display: none;
   justify-content: center;
   align-items: center;
@@ -133,7 +202,7 @@ button {
 
 .modal {
   background-color: #ffffff;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
   border-radius: calc(1.5 * var(--border-radius));
   width: 500px;
   max-width: 80%;
